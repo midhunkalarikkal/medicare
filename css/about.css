@@ -1,0 +1,334 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow-y: hidden;
+  }
+  
+.bg {
+    background-image: url("../images/leaves.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgroles {
+    /* background-image: url("../images/port.jpg"); */
+    height: 100%; 
+    padding: 20px;
+    padding-top: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgrolesadd {
+    /* background-image: url("../images/factory.jpg"); */
+    height: 100%; 
+    padding: 20px;
+    padding-top: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.centered {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+
+
+
+.formbtn{
+    background-color: #478684;
+    padding: 5px;
+    border: 0px;
+    height: 35px;
+    color: white;
+    margin: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 50%;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 25px;
+}
+.formbtn:hover{
+    background-color: #363538;
+    transition: background-color 0.5s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25), 0 3px 6px rgba(0,0,0,0.30);
+}
+
+.forminput{
+    width: 80%;
+    border: 1px solid;
+    border-color: #EAEAEA;
+    height: 30px;
+    padding: 8px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: Helvetica, sans-serif;
+}
+.forminput:hover{
+    background-color: #FCFCFC;
+    border-color:#5FC9F8;
+    transition: background-color 0.5s ease;
+    transition: border-color 0.5s ease;
+}
+.forminput:focus{
+    background-color: #FCFCFC;
+    border-color:#147EFB;
+    transition: background-color 0.5s ease;
+}
+
+.formselect{
+    width: 80%;
+    border: 1px solid;
+    border-color: #EAEAEA;
+    height: 35px;
+    padding: 8px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: Helvetica, sans-serif;
+}
+.formselect:hover{
+    background-color: #FCFCFC;
+    border-color:#5FC9F8;
+    transition: background-color 0.5s ease;
+    transition: border-color 0.5s ease;
+}
+.formselect:focus{
+    background-color: #FCFCFC;
+    border-color:#147EFB;
+    transition: background-color 0.5s ease;
+}
+
+.formlabel{
+    width: 80%;
+    font-family: Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    .searchBox{
+        width: 80%;
+    }
+    .searchBtn{
+        width: 10%;
+    }
+    .cardstyle{
+        width: 90%;
+    }
+    .fixedcardstyle{
+        width: 90%;
+    }
+    .mycardstyle{
+        width: 90%;
+    }
+    .alertcontent {
+        width: 90%;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 7px 7px 7px 7px;
+    }
+}
+
+.nav-link{
+    font-family: Helvetica;
+    font-size: 20px;
+    color: #478684 !important;
+    margin-right: 5px; margin-left: 5px;
+}
+
+.nav-link:hover{
+    color: white !important;
+    border-radius: 10px !important;
+    background-color: #363538;
+}
+
+.cardbtnarea{
+    padding: 20px; 
+}
+.formitem{
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.navigationlink{
+    padding-top: 5px; padding-bottom: 5px;
+    padding-left: 15px; padding-right: 25px;
+    font-size: 20px; font-family:Helvetica;
+    color: white;
+}
+.navigationlink:hover{
+    color: #FECB2E;
+}
+
+
+.navigator{
+    text-align: right;
+    padding: 5px;
+}
+
+.violetgradient{
+    margin:0px;
+  background: linear-gradient(-45deg,#407a97,#408e97, #40978b, #40978e );
+  background-size: 400% 400%;
+  -webkit-animation: gradientBG 10s ease infinite;
+          animation: gradientBG 10s ease infinite;
+  }
+  @-webkit-keyframes gradientBG {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+  @keyframes gradientBG {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+.loginformcard{
+    background-color: #f6f6f6f2;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 40%;
+}
+@media only screen and (max-width: 600px) {
+    .loginformcard{
+        width: 85%;
+    }
+}
+
+.greybackground{
+    background-color: #e8e8e8;
+}
+
+/*waves****************************/
+
+
+.box {
+	position: fixed;
+	top: 0;
+	transform: rotate(80deg);
+    left: 0;
+    z-index: -1;
+}
+
+.wave {
+	position: fixed;
+	top: 0;
+	left: 0;
+  opacity: .4;
+  top: 3%;
+  left: 10%;
+  background: #6fb3b8;
+  width: 1500px;
+  height: 1300px;
+  margin-left: -150px;
+  margin-top: -250px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 7000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 7500ms infinite linear;
+	background-color: #badfe7;
+}
+
+.wave.-two {
+  animation: drift 3000ms infinite linear;
+  opacity: .5;
+  background: #161616;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+.loginformcard h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.loginformcard h4{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.loginformcard P{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:17px;
+}
+
+#card1{
+    margin-top: 15%;
+    width: 50%;
+}
+
+#maincard4{
+    margin-top: 8%;
+}
+
+#maincard2{
+    margin-top: 13%;
+}
+
+#uidtosignup{
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.greyarea h5{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.loginformcard h4{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.description{
+    background-color: #f6f6f6f2;
+    margin-top: 150px;
+    padding: 30px;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 60%;
+}
+@media only screen and (max-width: 600px) {
+    .description{
+        width: 85%;
+    }
+}
+
+.description p{
+    font-size: 18px;
+    font-weight: 500;
+}

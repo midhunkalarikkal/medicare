@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="SHORTCUT ICON" href="images/fibble.png" type="image/x-icon" />
+    <link rel="ICON" href="images/logo.png" type="image/ico" />
+
+    <title>Un autherised user</title>
+    <style>
+      
+      body, html {
+        height: 100%;
+        margin: 0;
+        overflow-y: hidden;
+        background: linear-gradient(-45deg,#407a97,#408e97, #40978b, #40978e );
+        background-size: 400% 400%;
+        -webkit-animation: gradientBG 10s ease infinite;
+                animation: gradientBG 10s ease infinite;
+        }
+        @-webkit-keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+      .error-message {
+        background-color: #fbcfcf;
+        border: 1px solid #000000;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        width: 50%;
+        margin: 50px;
+        box-shadow: 0 0 10px 5px #666;
+      }
+      
+      .error-message h4 {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 0;
+        padding-bottom: 10px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      .error-message p {
+        color: #328b20;
+        font-weight: bold;
+        font-size: 17px;
+        margin: 0;
+        padding-bottom: 10px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      
+      .error-message button {
+        background-color: #ff0000;
+        border: none;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 40%;
+        height: 40px;
+      }
+      </style>
+  </head>
+
+  <body class="violetgradient">
+  <center>
+          <div class="error-message">
+              <h4>Entered email or password is incorrect</h4>
+              <p>Try agin..</p>
+              <button id="closebutton" class="formbtn" onclick="redirectToPHP()"> Back to Home </button>
+          </div>
+  </center>
+    <script>
+
+    function redirectToPHP() {
+        window.location.href = "index.php";
+    }
+    </script>
+    <script type="text/javascript" src="js/changetitle.js"></script>
+  </body>
+</html>
