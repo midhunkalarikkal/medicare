@@ -26,7 +26,7 @@
   <div style="width: 100%">
     <center>
       <div class="description">
-        <p><strong style="font-size: 25px;">Medicare</strong> is a Decentralized E2E Application that stores the
+        <p><strong style="font-size: 25px;">PharmaNet</strong> is a Decentralized E2E Application that stores the
           whereabouts of MEDICINE at every freight hub on the Blockchain. At consumer end, customers can simply scan the
           QR CODE of products and get complete information about the provenance of that product hence empowering
           consumers to only purchase authentic and quality products.</p>
