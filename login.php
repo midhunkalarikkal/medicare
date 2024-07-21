@@ -1,7 +1,8 @@
-<?php 
+<?php
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,123 +18,126 @@ session_start(); ?>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mdb.min.css" rel="stylesheet">
     <link href="css/style.css?<?php echo time(); ?>" rel="stylesheet">
-
   </head>
 
   <?php
-  $errormsg="Please check your Email and Password and try again.";
-  $submission=0;
+  $errormsg = "Please check your Email and Password and try again.";
+  $submission = 0;
 
-  if( isset($_POST['loginsubmit']) ){
-    if( isset($_POST['email']) && isset($_POST['pw']) ){
-        include 'connectdb.php';
-        $conn=openConnection();
+  if (isset($_POST['loginsubmit'])) {
+    if (isset($_POST['email']) && isset($_POST['pw'])) {
+      include 'connectdb.php';
+      $conn = openConnection();
 
-        $email=mysqli_real_escape_string($conn,trim($_POST['email']));
-        $pw=md5(trim($_POST['pw']));
-        $submission=1;
+      $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+      $pw = md5(trim($_POST['pw']));
+      $submission = 1;
 
-        $insertQ="SELECT * FROM users WHERE email='$email' AND password='$pw' ";
-        $qry_result=mysqli_query($conn, $insertQ) or die(mysqli_error($conn));
-        if( mysqli_num_rows($qry_result)>0 ){
-            $row = mysqli_fetch_array($qry_result);
-            $_SESSION['role']=$row['role'];
-            $_SESSION['username']=$row['username'];
-            include 'redirection.php';
-            redirect('checkproduct.php');
-        }else{
-            $submission=10;
+      $insertQ = "SELECT * FROM users WHERE email='$email' AND password='$pw' ";
+      $qry_result = mysqli_query($conn, $insertQ) or die(mysqli_error($conn));
+      if (mysqli_num_rows($qry_result) > 0) {
+        $row = mysqli_fetch_array($qry_result);
+        $_SESSION['role'] = $row['role'];
+        $_SESSION['username'] = $row['username'];
+        include 'redirection.php';
+        redirect('checkproduct.php');
+      } else {
+        $submission = 10;
+      }
+
+      if ($submission == 10) {
+        ?>
+
+        <?php
+        $email = $_POST['email'];
+        $password = $_POST['pw'];
+
+        $adminEmail = "adminmedicare@gmail.com";
+        $adminPassword = "123";
+
+        if ($email === $adminEmail && $password === $adminPassword) {
+          header("Location: admin.php");
+          exit();
+        } else {
+          echo "adminerror.html";
         }
 
-        if( $submission==10 ){
-  ?>
+        session_start();
+        if (!isset($_SESSION['admin'])) {
+          header("Location: adminerror.html");
+          exit();
+        }
 
-  <?php
-    $email = $_POST['email'];
-    $password = $_POST['pw'];
+        session_start();
 
-    $adminEmail = "adminmedicare@gmail.com";
-    $adminPassword = "123";
+        if ($email === $adminEmail && $password === $adminPassword) {
+          $_SESSION['admin'] = true;
+          header("Location: admin.php");
+          exit();
+        }
+        ?>
 
-    if ($email === $adminEmail && $password === $adminPassword) {
-      header("Location: admin.php");
-      exit(); 
-    } else {
-      echo "adminerror.html";
-    }
+        <body class="violetgradient">
 
-    session_start();
-    if (!isset($_SESSION['admin'])) {
-      header("Location: adminerror.html");
-      exit();
-    }
+          <center>
+            <div class="customalert">
+              <div class="alertcontent">
+                <div id="alertText"> &nbsp </div>
+                <img id="qrious">
+                <div id="bottomText" style="margin-top: 10px; margin-bottom: 15px;"> &nbsp </div>
+                <button id="closebutton" class="formbtn"> OK </button>
+              </div>
+            </div>
+          </center>
 
-    session_start();
+          <div style="width: 100%">
+            <center>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+              <script>
+                function showAlert(message) {
+                  $("#alertText").html(message);
+                  $("#qrious").hide();
+                  $("#bottomText").hide();
+                  $(".customalert").show("fast", "linear");
+                }
+              </script>
+              <?php echo "<script> showAlert('$errormsg') </script>"; ?>
 
-    if ($email === $adminEmail && $password === $adminPassword) {
-      $_SESSION['admin'] = true;
-      header("Location: admin.php");
-      exit();
-    }
-  ?>
+              <div class="loginformcard" id="card1">
+                <h4> Login to your existing account</h4>
+                <form style="margin-top: 30px; margin-bottom: 30px;" action="login.php" method="POST"
+                  onsubmit="return checkFirstForm(this);">
 
-  <body class="violetgradient">
-  <center>
-      <div class="customalert">
-          <div class="alertcontent">
-              <div id="alertText"> &nbsp </div>
-              <img id="qrious">
-              <div id="bottomText" style="margin-top: 10px; margin-bottom: 15px;"> &nbsp </div>
-              <button id="closebutton" class="formbtn"> OK </button>
+                  <label type="text" class="formlabel"> Email </label>
+                  <input type="text" class="forminput" value="<?php echo $email; ?>" name="email" id="email"
+                    onkeypress="isNotChar(event)" required>
+
+                  <label type="text" class="formlabel" style="margin-top: 10px;"> Password </label>
+                  <input type="password" class="forminput" value="<?php echo $_POST['pw']; ?>" name="pw" id="pw"
+                    onkeypress="isNotChar(event)" required>
+
+                  <button class="formbtn" name="loginsubmit" type="submit">Login</button>
+
+                  <br>
+                  <a href="#" id="gotosignup"> Don't have an account? Create a new account now</a>
+                </form>
+
+              </div>
+            </center>
           </div>
-      </div>
-  </center>
-    <div style="width: 100%">
-      <center>
 
-      <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>
-    function showAlert(message){
-      $("#alertText").html(message);
-      $("#qrious").hide();
-      $("#bottomText").hide();
-      $(".customalert").show("fast","linear");
+          <?php
+      }
+    } else {
+      include 'redirection.php';
+      redirect('index.php');
     }
-    </script>
-    <?php echo "<script> showAlert('$errormsg') </script>"; ?>
 
-      <div class="loginformcard" id="card1">
-      <h4> Login to your existing account</h4>
-            <form style="margin-top: 30px; margin-bottom: 30px;" action="login.php" method="POST" onsubmit="return checkFirstForm(this);">
-
-            <label type="text" class="formlabel"> Email </label>
-            <input type="text" class="forminput" value="<?php echo $email; ?>" name="email" id="email" onkeypress="isNotChar(event)" required>
-
-            <label type="text" class="formlabel" style="margin-top: 10px;"> Password </label>
-            <input type="password" class="forminput" value="<?php echo $_POST['pw']; ?>" name="pw" id="pw" onkeypress="isNotChar(event)" required>
-
-            <button class="formbtn" name="loginsubmit" type="submit">Login</button>
-
-            <br>
-            <a href="#" id="gotosignup"> Don't have an account? Create a new account now</a>
-            </form>
-                
-      </div>
-      </center>
-    </div>
-    <?php
-        }
-    }else{
+  } else {
     include 'redirection.php';
     redirect('index.php');
-    }
-
-    }else{
-    include 'redirection.php';
-    redirect('index.php');
-    }
-    ?>
+  }
+  ?>
 
     <!-- Material Design Bootstrap-->
     <script type="text/javascript" src="js/popper.min.js"></script>
@@ -141,81 +145,83 @@ session_start(); ?>
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script type="text/javascript" src="js/changetitle.js"></script>
     <script>
-  
-    function isInputNumber(evt){
-      var ch = String.fromCharCode(evt.which);
-      if(!(/[0-9]/.test(ch))){
+
+      function isInputNumber(evt) {
+        var ch = String.fromCharCode(evt.which);
+        if (!(/[0-9]/.test(ch))) {
           evt.preventDefault();
+        }
       }
-    }
-    function isNotChar(evt){
-      var ch = String.fromCharCode(evt.which);
-      if(ch=="'"){
-        evt.preventDefault();
+      
+      function isNotChar(evt) {
+        var ch = String.fromCharCode(evt.which);
+        if (ch == "'") {
+          evt.preventDefault();
+        }
       }
-    }
 
-    function blockSpecialChar(e){
-      var k;
-      document.all ? k = e.keyCode : k = e.which;
-      return ((k >= 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 46|| k == 42|| k == 33 || k == 32 || (k >= 48 && k <= 57));
-    }
-
-    $("#login").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard3").hide("fast","linear");
-      $("#maincard2").show("fast","linear");
-    });
-
-    $("#gotologin").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard3").hide("fast","linear");
-      $("#maincard2").show("fast","linear");
-    });
-
-    $("#openlogin").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard3").hide("fast","linear");
-      $("#maincard2").show("fast","linear");
-    });
-
-    $("#signup").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard2").hide("fast","linear");
-      $("#maincard3").show("fast","linear");
-    });
-
-    $("#gotosignup").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard2").hide("fast","linear");
-      $("#maincard3").show("fast","linear");
-    });
-
-    $("#opensignup").on("click", function(){
-      $("#card1").hide("fast","linear");
-      $("#maincard2").hide("fast","linear");
-      $("#maincard3").show("fast","linear");
-    });
-
-    $("#closebutton").on("click", function(){
-        $(".customalert").hide("fast","linear");
-    });
-
-    function checkFirstForm(theform){
-      var email = theform.email.value;
-
-      if (!validateEmail(email)) {
-        showAlert("Invalid Email address");
-        return false;
+      function blockSpecialChar(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k >= 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 46 || k == 42 || k == 33 || k == 32 || (k >= 48 && k <= 57));
       }
-      return true;
-    }
 
-    function validateEmail(email) {
+      $("#login").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard3").hide("fast", "linear");
+        $("#maincard2").show("fast", "linear");
+      });
+
+      $("#gotologin").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard3").hide("fast", "linear");
+        $("#maincard2").show("fast", "linear");
+      });
+
+      $("#openlogin").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard3").hide("fast", "linear");
+        $("#maincard2").show("fast", "linear");
+      });
+
+      $("#signup").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard2").hide("fast", "linear");
+        $("#maincard3").show("fast", "linear");
+      });
+
+      $("#gotosignup").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard2").hide("fast", "linear");
+        $("#maincard3").show("fast", "linear");
+      });
+
+      $("#opensignup").on("click", function () {
+        $("#card1").hide("fast", "linear");
+        $("#maincard2").hide("fast", "linear");
+        $("#maincard3").show("fast", "linear");
+      });
+
+      $("#closebutton").on("click", function () {
+        $(".customalert").hide("fast", "linear");
+      });
+
+      function checkFirstForm(theform) {
+        var email = theform.email.value;
+
+        if (!validateEmail(email)) {
+          showAlert("Invalid Email address");
+          return false;
+        }
+        return true;
+      }
+
+      function validateEmail(email) {
         var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
-    }
-    
+      }
+
     </script>
   </body>
+
 </html>

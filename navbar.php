@@ -10,15 +10,14 @@
 
   <div class="collapse navbar-collapse" id="basicExampleNav">
     <ul class="navbar-nav mr-auto">
-
     <?php
-    if ( isset( $_SESSION['role'] ) ){
+      if ( isset( $_SESSION['role'] ) ){
     ?>
       <li class="nav-item">
         <a class="nav-link" href="checkproduct.php">Check Products</a>
       </li>
     <?php
-    if ( $_SESSION['role']==0 ){
+        if ( $_SESSION['role']==0 ){
     ?>
       <li class="nav-item">
         <a class="nav-link" href="addproduct.php">Add Products</a>
@@ -30,12 +29,12 @@
         <a class="nav-link" href="scanshipment.php">Scan Shipment</a>
       </li>
     <?php
-    }
-    }
+        }
+      }
     ?>
-    <li class="nav-item">
-    <a class="nav-link" id="aboutbtn" onclick="redirectToPHP()"> About </a>
-    </li>
+      <li class="nav-item">
+        <a class="nav-link" id="aboutbtn" onclick="redirectToPHP()"> About </a>
+      </li>
     </ul>
 
     <form class="form-inline">
@@ -55,7 +54,7 @@
 
 <script>
   function redirectToPHP() {
-        window.location.href = "about.php";
-    }
+    window.location.href = "about.php";
+  }
 </script>
 

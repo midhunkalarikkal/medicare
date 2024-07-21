@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light white" style="position: fixed; width: 100%;z-index: 20;">
-<a class="navbar-brand" href="checkproduct.php">
-<img src="images/logo.png" style="height: 50px; width: 50px; border: 3px solid #00b386; border-radius: 10px; background-color: #003326;" alt="MEDICHAIN"> &nbsp
-</a>
+  <a class="navbar-brand" href="checkproduct.php">
+    <img src="images/logo.png"
+      style="height: 50px; width: 50px; border: 3px solid #00b386; border-radius: 10px; background-color: #003326;"
+      alt="MEDICHAIN"> &nbsp
+  </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
     aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +25,13 @@
 </nav>
 
 <style>
-.navbar-nav{
-  margin-left: auto;
-}
+  .navbar-nav {
+    margin-left: auto;
+  }
 </style>
 
 <script>
   function redirectToPHP() {
-        window.location.href = "about.php";
-    }
+    window.location.href = "about.php";
+  }
 </script>
